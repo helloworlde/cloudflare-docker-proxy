@@ -35,3 +35,25 @@
    };
    ```
 
+
+## Config Docker mirrors
+1. modify `/etc/docker/daemon.json`, add **registry-mirrors** as follow:
+   - if you choose **4.1 use cloudflare worker host**.   
+     Change the following **url** to your **actually url** (which you can find in **Preview** or **Routes** of your worker).
+    ```javascript
+    {
+        "registry-mirrors": ["https://<workername>.<username>.workers.dev"]
+    }
+    ```
+    - if you choose **4.2 use custom domain**
+    ```javascript
+    {
+        "registry-mirrors": ["https://docker.yourdomain.com"]
+    }
+    ```
+2. restart docker daemon
+```
+   systemctl restart docker.service
+```
+   
+
